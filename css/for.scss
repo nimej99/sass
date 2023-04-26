@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+div{
+  height:50px;
+  margin-bottom:10px;
+  background: pink;
+}
+
+//for (초기값;조건문;증감식){}
+
+// @for $i from 1 through 5{
+//   div:nth-of-type(#{$i}){
+//     width:50px * $i //50씩 증가
+//   }
+// }
+
+@for $i from 1 to 5{
+  div:nth-of-type(#{$i}){
+    width:50px * $i //50씩 증가
+  }
+}
+
+//Lists
+$color:#f00 #0f0 #00f;
+
+article{
+  h2:nth-child(1){color:nth($color, 1)}
+  h2:nth-child(2){color:nth($color, 2)}
+  h2:nth-child(3){color:nth($color, 3)}
+}
+
+//Maps
+$fontSize:("small":12px, "medium":18px, "large":24px);
+
+section{
+  h2:nth-child(1){font-size:map-get($fontSize, 'small')}
+  h2:nth-child(2){font-size:map-get($fontSize, 'medium')}
+  h2:nth-child(3){font-size:map-get($fontSize, 'large')}
+}
+
+//While
+// $i : 1; //초기값
+// .list01 > li{
+//   background: darkolivegreen;
+//   margin-bottom:10px;
+//   @while $i<=3{
+//      &:nth-child(#{$i}){
+//       width:100px * $i;
+//      }
+//      $i : $i + 1; //증감식
+//   }
+// }
+
+$i:1;
+.list01 > li {
+  background: orange;
+  margin-bottom: 10px;
+
+  @while $i <= 3{
+    &:nth-child(#{$i}) {
+      width:100px*$i;
+    }
+    $i: $i+1;
+  }
+}

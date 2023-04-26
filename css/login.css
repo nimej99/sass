@@ -1,0 +1,55 @@
+.login_wrap {
+  width: 1260px;
+  margin: 0 auto;
+  display: flex;
+}
+.login_wrap a {
+  text-decoration: none;
+  display: block;
+  margin: 0px 10px;
+  width: 300px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 5px;
+  color: #fff;
+}
+.login_wrap a:first-child {
+  background: #f00;
+}
+.login_wrap a:nth-child(2) {
+  background: #ffe600;
+  color: #392020;
+  font-weight: bold;
+  position: relative;
+}
+.login_wrap a:last-child {
+  background: #47B748;
+  font-weight: bold;
+  position: relative;
+  z-index: -1;
+}
+
+.naver, .kakao {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+}
+
+.kakao {
+  background-image: url(../images/sns_icon.png);
+  background-position: -127px -162px;
+  background-size: 535px 321px;
+}
+
+.naver {
+  background: #fff;
+  background-image: url(../images/sns_icon.png);
+  background-position: -530px -143px;
+  background-size: 900px 700px;
+}/*# sourceMappingURL=login.css.map */

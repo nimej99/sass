@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+//변수생성
+$myFont:'맑은 고딕', arial, sans-serif;
+$color:#333;
+$bigFontSize:30px;
+$baseFontSize:12px;
+$boxWidth:1260px;
+$boxCenter:0px auto;
+$bgColor:#ffff00;
+
+body{
+  font-family: $myFont;
+  font-size: $baseFontSize;
+  color:$color;
+}
+
+h1{
+  font-size: $bigFontSize;
+}
+#wrap{
+  width:$boxWidth;
+  height:300px;
+  $bgcolor01:#ccc;
+  margin:$boxCenter;
+  background: $bgcolor01;
+  color: $bgcolor01;
+  border:1px solid $bgcolor01;
+}
+p{
+  //위에 지역변수로 사용된 bgcolor는 아래에서 전역변수로 적용이 안됨
+  // background: $bgcolor01;
+}

@@ -1,0 +1,59 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul, li, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tab_wrap {
+  width: 1000px;
+  height: 500px;
+  margin: 0px auto;
+  border: 1px solid #333;
+  display: flex;
+}
+
+.gallery {
+  width: 50%;
+  position: relative;
+}
+.gallery img {
+  width: 100%;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.gallery li {
+  position: absolute;
+  display: none;
+}
+
+.gallery > li.on {
+  display: block;
+}
+
+.title {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.title li {
+  height: 100%;
+  line-height: 125px;
+  text-indent: 20px;
+  font-size: 24px;
+}
+.title li:not(:last-child) {
+  border-bottom: 1px solid #333;
+}
+.title li.on {
+  color: #fff;
+  background: #333;
+}/*# sourceMappingURL=tab.css.map */

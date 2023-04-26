@@ -1,0 +1,150 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap');
+
+$bg_color: #ff0;
+$txt_color01:#ff0000;
+$txt_color02:#0000ff;
+
+@mixin h3txt {
+  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
+  font-size: 30px;
+}
+
+.title01{
+  @include h3txt;
+  background: $bg_color;
+  color:$txt_color01;
+}
+
+.title02{
+  @include h3txt;
+  background: $bg_color;
+  color:$txt_color02;
+}
+
+@mixin txt_over{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.p01{
+  @include txt_over;
+  width:500px;
+  border:1px solid #333;
+  background: $bg_color;
+}
+
+//버튼 글자서식
+@mixin btnFont{
+  font-family: "궁서체";
+  font-weight: bold;
+  font-size: 20px;
+}
+
+//버튼 모양서식
+@mixin btnArea{
+  border:1px solid #ccc;
+  border-radius: 30px;
+  padding:5px 30px;
+}
+
+@mixin btn{
+  @include btnFont;
+  @include btnArea;
+}
+
+.btn01{
+  @include btn;
+  background: $bg_color;
+
+}
+.btn02{
+  @include btn;
+  background: $bg_color;
+}
+
+$time:0.5s;
+//버튼에 마우스 오버시 적용할 믹스인 함수
+@mixin btn_over{
+  background: #000;
+  color:#fff;
+  transition: $time;
+}
+.btn01:hover,
+.btn02:hover{
+  @include btn_over;
+}
+
+.toggle{
+  display:flex;
+  flex-wrap: wrap;
+  width:30px;
+  height:30px;
+}
+@mixin span{
+  width:30px;
+  height:3px;
+  background: #000;
+}
+.toggle > span{
+  @include span;
+  transition: $time;
+}
+
+#hamburger:checked + .toggle > span:first-child{
+  transform: rotate(45deg);
+  margin-top:10px;
+}
+#hamburger:checked + .toggle > span:last-child{
+  transform: rotate(-45deg);
+  margin: -11px 0px;
+}
+#hamburger:checked + .toggle > span:nth-child(2){
+  display:none;
+}
+
+//4. mixin 함수에 매개변수 삽입하기
+@mixin divBox($bg_color){
+  @include btnFont;
+  background: $bg_color;
+}
+#box01{
+  @include divBox(#0000ff);
+}
+#box02{
+  @include divBox(#00ff00);
+}
+
+//테이블 테두리 서식
+@mixin border($w:1px, $s:solid, $c:#f00){
+  width:300px;
+  border:$w $s $c;
+}
+
+//테이블 배경과 크기 서식
+@mixin table($t_bg:#f0f0f0){
+  background: $t_bg;
+  width:500px;
+}
+@mixin caption($bg:#ffff00){
+  background: $bg;
+  padding:10px 0px;
+  font-weight:bold;
+}
+
+.t_style{
+  border-collapse:collapse;
+  @include border(5px, double);
+  @include table;
+}
+.t_style caption{
+  @include caption;
+}
+
+@mixin odd_tr($bg:#fddc7a){
+  background: $bg;
+}
+.t_style tbody tr:nth-child(2n+1){
+  @include odd_tr;
+}

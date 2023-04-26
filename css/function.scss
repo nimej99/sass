@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+//wrap의 가로크기 변수
+$max-width:1180px;
+
+//12컬럼의 그리드
+//박스가 가지는 컬럼수에 따라 가로크기가 지정되는 함수임.
+@function columns($number : 1, $all : 12){
+  @return $max-width*($number/$all);
+}
+
+.wrap{
+  width:$max-width; //1180px
+  margin:0 auto;
+  border:3px solid #000;
+  .box01{
+    width:columns();
+    background: #f00;
+    height:100px;
+  }
+  .box02{
+    width:columns(6);
+    background: #0f0;
+    height:100px;
+  }
+  .box03{
+    width:columns(12);
+    background: #00f;
+    height:100px;
+  }
+}
+
+$mainColor:#e134ad;
+.button{
+  border:none;
+  padding:5px 20px;
+  border-radius: 5px;
+  background: $mainColor;
+  color:#fff;
+  &.btn02{
+    background: lighten($mainColor, 20%);
+  }
+}
+
+@function my-lighten($num){
+  @return 0.1 * $num;
+}
+
+.btn03{
+  opacity:my-lighten(2);
+}

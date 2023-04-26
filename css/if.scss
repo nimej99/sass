@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+@mixin div{
+  height:50px;
+  border:3px solid #000;
+  margin-bottom:20px;
+}
+
+$width1:600px;
+$width2:300px;
+
+.box01{
+  width:$width1;
+  background: if($width1 > 500, pink, lightblue);
+}
+
+.box02{
+  width:$width1;
+  background: if($width2 > 500, pink, lightblue);
+}
+
+//@if문, @else if, @else문
+
+.box01,
+.box02,
+.box03,
+.box04
+{
+  @include div;
+}
+
+$width3:768px; //태블릿 작은사이즈
+$width4:1025px; //pc최소크기
+
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1024px;
+
+@mixin mobile {
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+@include mobile {
+  .box03{
+    background: pink;
+  }
+  
+  .box04{
+      background: #ccc;
+    }
+}
+
+@include tablet {
+  .box03{
+      background: lightblue;
+  }
+
+  .box04{
+      background: #ffff00;
+  }
+}
+
+@include desktop {
+  .box03{
+      background: blue;
+  }
+
+  .box04{
+      background: darkcyan;
+  }
+}
+
+.box03{
+  width:$width3;
+}
+
+.box04{
+  width:$width4;
+}
+
+// mediaquery
+
+// @mixin respond-to($media) {
+
+//   @if $media == mobile { // mobile
+
+//     @media only screen and (max-width: $tabletSize - 1) { @content; }
+
+//   }
+
+//   @else if $media == tablet { // tablet
+
+//     @media only screen and (min-width: $tabletSize) and (max-width: $pcSize - 1) { @content; }
+
+//   }
+
+//   @else if $media == pc { // pc
+
+//     @media only screen and (min-width: $pcSize) { @content; }
+
+//   }
+
+//   @else if $media == mt { // mobile~tablet
+
+//       @media only screen and (max-width: $pcSize - 1) { @content; }
+
+//   }
+
+//   @else if $media == tp { // tablet~pc
+
+//       @media only screen and (min-width: $tabletSize) { @content; }
+
+//   }
+
+// }

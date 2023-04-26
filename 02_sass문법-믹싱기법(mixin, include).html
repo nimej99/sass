@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02_sass문법-믹싱기법(mixin, include)</title>
+  <link rel="stylesheet" href="./css/style2.css">
+</head>
+<body>
+  <h2>02_sass문법-믹싱기법(mixin, include)</h2>
+  <h3>1. $mixin 문법</h3>
+  <p>웹사이트 전체에 재사용할 css코드를 정의하는 문.</p>
+  <pre>
+    @mixin mixin명{
+      //반복해서 사용할 스타일 서식을 작성한다.
+    }
+  </pre>
+
+  <h3>2. @include문법</h3>
+  <p>@mixin 을 선택자에 포함하는데 사용하는 지시문</p>
+  <pre>
+    선택자{
+      @include mixin명;
+    }
+  </pre>
+  
+  <h3 class="title01">h3태그 요소를 2개 작성하여 동일한 서식과 다른 서식 적용하기</h3>
+  <h3 class="title02">mixin 서식 적용하기</h3>
+
+  <p class="p01">믹스인 함수 (txt_over)을 사용하여 글자 생략기호 나오게 하는 서식 적용하기</p>
+
+  <h3>3. @mixin을 중첩하여 새로운 @mixin 만들기</h3>
+
+  <pre>
+    문법)
+    @mixin 믹스인명 A{
+      //재사용할 스타일 서식을 작성
+    }
+    
+    @mixin 믹스인명 B{
+      //재사용할 스타일 서식을 작성
+    }
+    
+    @mixin 믹스인명 C{
+      @include 믹스인명 A;
+      @include 믹스인명 B;
+    }
+  </pre>
+
+  <p>예제 - 문단태그안에 span요소 2개를 작성하여 버튼서식 각각 적용하기</p>
+  <p>
+    <span class="btn01">버튼1</span>
+    <span class="btn02">버튼2</span>
+  </p>
+
+  <input type="checkbox" id="hamburger" style="display:none">
+  <label for="hamburger" class="toggle">
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+  </label>
+
+  <h3>4. @mixin에 매개변수 처리하기</h3>
+  <p>@mixin 함수처럼 매개변수와 인수값을 가질 수 있다.</p>
+  <p>매개변수를 사용하여 다양한 결과물을 만들 수 있다.</p>
+
+  <pre>
+    @mixin 믹스인명($매개변수){
+      //재사용할 스타일 서식
+    }
+    @include 믹스인명(인수)
+  </pre>
+
+  <div id="box01">box01</div>
+  <div id="box02">box02</div>
+
+  <!-- 테이블 태그 -->
+  <table class="t_style">
+    <caption>표제목</caption>
+    <thead>
+      <tr>
+        <th>셀제목</th>
+        <th>셀제목</th>
+        <th>셀제목</th>
+        <th>셀제목</th>
+        <th>셀제목</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>셀내용</td>
+        <td>셀내용</td>
+        <td>셀내용</td>
+        <td>셀내용</td>
+        <td>셀내용</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

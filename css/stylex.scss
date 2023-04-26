@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+$break-tablet:767px;
+$break-pc:1024px;
+
+* {box-sizing: border-box;}
+
+%flex_and_wrap {
+  display: flex; flex-wrap: wrap;
+  > article {border: 5px solid #fff;}
+}
+
+.hidden {display: none;}
+.visual {height: 200px;background-color: greenyellow;}
+.cont01 {
+  @extend %flex_and_wrap;
+  background-color: red;
+  > article {height: 270px;}
+}
+.cont02 {
+  @extend %flex_and_wrap;
+  background-color: green;
+  > article {height: 150px;}
+}
+header {height: 123px;background-color: skyblue;}
+footer {height: 110px;background-color: yellow;}
+
+//한 줄에 출력될 갯수, 현재 자신의 순서, 컬럼의 총 갯수
+@function autoWidth($content_num: 1, $index: 0, $total: 1) {
+  @if($index == $total) {
+    @return 100%;
+  } @else {
+    @return 100% / $content_num;
+  }
+}
+
+//모바일
+@media (min-width:0px) and (max-width:$break-tablet){
+  header {height: 80px;}
+  @for $i from 1 through 2 {
+    .cont0#{$i} > article {
+      @for $j from 1 through 3 {
+        &:nth-of-type(#{$j}) {
+          width: autoWidth(1, $j, 3);
+        }
+      }
+    }
+  }
+}
+
+//태블릿
+@media (min-width:$break-tablet) and (max-width:$break-pc){
+  @for $i from 1 through 2 {
+    .cont0#{$i} > article {
+      @for $j from 1 through 3 {
+        &:nth-of-type(#{$j}) {
+          width: autoWidth(2, $j, 3);
+        }
+      }
+    }
+  }
+}
+
+//PC
+@media (min-width:$break-pc){
+  .wrap {
+    width: 940px;
+    margin: 0 auto;
+  }
+  @for $i from 1 through 2 {
+    .cont0#{$i} > article {
+      > &:first-of-type, > &:last-of-type {width:280px;}
+      width: 380px;
+    }
+  }
+}

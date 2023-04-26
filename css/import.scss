@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+//import.scss파일
+@import 'style3';
+
+h2{
+  font-size: $bigFontSize;
+  color:$color;
+  background: $bgColor;
+}

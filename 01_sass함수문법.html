@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_sass함수문법</title>
+  <link rel="stylesheet" href="./css/function.css" type="text/css">
+</head>
+<body>
+  <h2>01_sass함수문법</h2>
+  <dl>
+    <dt>@function 문법</dt>
+    <dd>- 사용자가 함수를 직접 정의하여 사용할 수 있습니다.</dd>
+    <dd>- @mixin과 비슷해보이지만 반환되는 내용이 다릅니다.</dd>
+    <dd>- @mixin은 지정한 스타일을 반환하지만 @function(함수)는 연산된 값을 @return 키워드로 반환합니다.</dd>
+  </dl>
+
+  <pre>
+    **문법
+    @mixin 믹스인명($매개변수){
+      스타일 서식
+    }
+
+    -------------------------------------
+
+    @function 함수명($매개변수){
+      @return 값;
+    }
+
+    **호출문법
+    @include 믹스인명(인수);
+
+    --------------------------------------
+
+    함수명(인수)
+  </pre>
+
+  <h3>실습예제 1. 가로 1180px 박스 안에 12컬럼을 지정하고 각각 박스에 몇컬럼을 설정할지 지정하기</h3>
+  <div class="wrap">
+    <div class="box01"></div>
+    <div class="box02"></div>
+    <div class="box03"></div>
+  </div>
+
+  <h3>2. @function - 함수명 지정시 유의사항</h3>
+  <dl>
+    <dt>내장함수</dt>
+    <dd>sass에 미리 내장되어 있는 함수를 내장함수라고 한다. 그 함수들은 이름이 미리 지정되어 있다.</dd>
+    <dd>url주소 참고 https://sass-lang.com/documentation/modules</dd>
+  </dl>
+
+  <p>실습. 내장함수로 서식변경하기</p>
+  <input type="button" value="버튼" class="button">
+  <input type="button" value="버튼" class="button btn02">
+  <input type="button" value="버튼" class="button btn03">
+  
+</body>
+</html>
